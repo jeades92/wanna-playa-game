@@ -1,13 +1,16 @@
 var timeLeft = 99; //total time available
 var timerId; 
+var currentQuestionIndex = 0;
+
 
 //references to HTML
 var startButton = document.getElementById("start-btn");
+var nextButton = document.getElementById("next-btn")
 var questionsDiv = document.getElementById("questions");
 var timerDiv = document.getElementById("timer")
 
 function showQuestion() {
-    var question = questions[0];
+    var question = questions[currentQuestionIndex];
     var questionsEl = document.createElement("h2");
     questionsEl.textContent = question.question;
     questionsDiv.appendChild(questionsEl);
@@ -22,6 +25,14 @@ function showQuestion() {
             } else {
                 console.log("incorrect");
             }
+            //increment questions
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                questionsDiv.innerHTML = "";
+                showQuestion
+            } else {
+                showScore();
+            }
         });
     });
 }
@@ -31,6 +42,9 @@ startButton.addEventListener("click", function() {
     startTimer();
     showQuestion();
 });
+nextButton.addEventListener("click", function() {
+    showQuestion();
+})
 
 //start timer
 function startTimer() {
