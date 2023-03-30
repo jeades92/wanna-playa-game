@@ -1,15 +1,20 @@
-var timeLeft = 99; //total time available
+var timeLeft = 33; //total time available
 var timerId; 
 var currentQuestionIndex = 0;
 
 
 //references to HTML
 var startButton = document.getElementById("start-btn");
-var nextButton = document.getElementById("next-btn")
 var questionsDiv = document.getElementById("questions");
 var timerDiv = document.getElementById("timer")
 
 function showQuestion() {
+if (currentQuestionIndex >= questions.length) {
+    timerDiv.innerHTML = "Game Over";
+    showScore();
+    return;
+}
+
     var question = questions[currentQuestionIndex];
     var questionsEl = document.createElement("h2");
     questionsEl.textContent = question.question;
@@ -24,6 +29,7 @@ function showQuestion() {
                 console.log("correct");
             } else {
                 console.log("incorrect");
+                timeLeft -=3;
             }
             //increment questions
             currentQuestionIndex++;
@@ -42,12 +48,14 @@ startButton.addEventListener("click", function() {
     startTimer();
     showQuestion();
 });
-nextButton.addEventListener("click", function() {
+questionsDiv.addEventListener("click", function() {
     showQuestion();
 })
 
 //start timer
 function startTimer() {
+    //hide start btn
+    startButton.style.display = "none";
     //clear timer
     clearInterval(timerId);
     //update timer
@@ -55,9 +63,9 @@ function startTimer() {
         timeLeft--;
         timerDiv.innerHTML = "Time left: " + timeLeft + "seconds";
 
-        if (timeLeft <= 0) {
+        if (timeLeft <= 0 || currentQuestionIndex >= questions.length) {
             clearInterval(timerId);
-            timerDiv.innerHTML = "Out of time";
+            timerDiv.innerHTML = "Game Over";
             showScore();
         }  
     }, 1000);
