@@ -1,0 +1,11 @@
+body {
+    background-color: black;
+    color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    align-content: center;
+    margin: 20px;
+}
