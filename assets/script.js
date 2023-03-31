@@ -4,6 +4,7 @@ var currentQuestionIndex = 0;
 var numCorrect = 0;
 
 
+
 //references to HTML
 var startButton = document.getElementById("start-btn");
 var questionsDiv = document.getElementById("questions");

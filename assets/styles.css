@@ -8,4 +8,12 @@ body {
     text-align: center;
     align-content: center;
     margin: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+#start-btn {
+    margin: 0px 700px;
+    background-color: lightblue;
+    font-weight: bolder;
+}
+
