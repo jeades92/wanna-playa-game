@@ -1,16 +1,14 @@
 var timeLeft = 33; //total time available
 var timerId; 
 var currentQuestionIndex = 0;
-var numCorrect = 0;
 
 
 
 //references to HTML
 var startButton = document.getElementById("start-btn");
 var questionsDiv = document.getElementById("questions");
-var timerDiv = document.getElementById("timer");
-var score = document.getElementById("score");
-  
+var timerDiv = document.getElementById("timer")
+
 function showQuestion() {
 if (currentQuestionIndex >= questions.length) {
     timerDiv.innerHTML = "Game Over";
@@ -29,10 +27,9 @@ if (currentQuestionIndex >= questions.length) {
         questionsDiv.appendChild(choiceEl);
         choiceEl.addEventListener("click", function() {
             if(choice === question.answer) {
-                numCorrect++;
-                // console.log("correct");
+                console.log("correct");
             } else {
-                // console.log("incorrect");
+                console.log("incorrect");
                 timeLeft -=3;
             }
             //increment questions
@@ -41,7 +38,7 @@ if (currentQuestionIndex >= questions.length) {
                 questionsDiv.innerHTML = "";
                 showQuestion
             } else {
-                showScore() 
+                showScore();
             }
         });
     });
@@ -55,12 +52,6 @@ startButton.addEventListener("click", function() {
 questionsDiv.addEventListener("click", function() {
     showQuestion();
 })
-
-function showScore() {
-    var numQuestions = questions.length;
-    var scoreText = "You answered " + numCorrect + " out of " + numQuestions + " questions correctly.";
-    score.textContent=scoreText;
-}
 
 //start timer
 function startTimer() {
@@ -104,3 +95,4 @@ const questions = [
         answer: "Float",
     }
 ]
+
