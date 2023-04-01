@@ -1,5 +1,5 @@
 var timeLeft = 33; //total time available
-var timerId; 
+var timerId;
 var currentQuestionIndex = 0;
 var numCorrect = 0;
 
@@ -10,30 +10,42 @@ var startButton = document.getElementById("start-btn");
 var questionsDiv = document.getElementById("questions");
 var timerDiv = document.getElementById("timer");
 var score = document.getElementById("score");
-  
+
 function showQuestion() {
-if (currentQuestionIndex >= questions.length) {
-    timerDiv.innerHTML = "Game Over";
-    showScore();
-    return;
-}
+    if (currentQuestionIndex >= questions.length) {
+        timerDiv.innerHTML = "Game Over";
+        showScore();
+        return;
+    }
 
     var question = questions[currentQuestionIndex];
     var questionsEl = document.createElement("h2");
     questionsEl.textContent = question.question;
     questionsDiv.appendChild(questionsEl);
 
-    question.choices.forEach(function(choice) {
+    question.choices.forEach(function (choice) {
         var choiceEl = document.createElement("button");
         choiceEl.textContent = choice;
+        choiceEl.style.display = "flex-wrap";
+        choiceEl.style.flex = "wrap";
+        choiceEl.style.marginBottom = "10px";
+        choiceEl.style.marginLeft = "5px";
+        choiceEl.style.marginRight = "5px";
+        choiceEl.style.padding = "5px";
+        choiceEl.style.width = "40%";
+        choiceEl.style.borderRadius = "10px";
+        choiceEl.style.backgroundColor = "pink";
+        choiceEl.style.border = "none";
+        choiceEl.style.fontSize = "18px";
+        choiceEl.style.cursor = "pointer";
         questionsDiv.appendChild(choiceEl);
-        choiceEl.addEventListener("click", function() {
-            if(choice === question.answer) {
+        choiceEl.addEventListener("click", function () {
+            if (choice === question.answer) {
                 numCorrect++;
                 // console.log("correct");
             } else {
                 // console.log("incorrect");
-                timeLeft -=3;
+                timeLeft -= 3;
             }
             //increment questions
             currentQuestionIndex++;
@@ -41,25 +53,25 @@ if (currentQuestionIndex >= questions.length) {
                 questionsDiv.innerHTML = "";
                 showQuestion
             } else {
-                showScore() 
+                showScore()
             }
         });
     });
 }
 
 //event listener for start-btn
-startButton.addEventListener("click", function() {
+startButton.addEventListener("click", function () {
     startTimer();
     showQuestion();
 });
-questionsDiv.addEventListener("click", function() {
+questionsDiv.addEventListener("click", function () {
     showQuestion();
 })
 
 function showScore() {
     var numQuestions = questions.length;
     var scoreText = "You answered " + numCorrect + " out of " + numQuestions + " questions correctly.";
-    score.textContent=scoreText;
+    score.textContent = scoreText;
 }
 
 //start timer
@@ -69,17 +81,18 @@ function startTimer() {
     //clear timer
     clearInterval(timerId);
     //update timer
-    timerId = setInterval(function() {
-        timeLeft--;
-        timerDiv.innerHTML = "Time left: " + timeLeft + "seconds";
-
-        if (timeLeft <= 0 || currentQuestionIndex >= questions.length) {
-            clearInterval(timerId);
-            timerDiv.innerHTML = "Game Over";
-            showScore();
-        }  
+    timerId = setInterval(function () {
+      timeLeft--;
+      timerDiv.innerHTML = "Time left: " + timeLeft + " seconds";
+  
+      if (timeLeft <= 0 || currentQuestionIndex >= questions.length) {
+        clearInterval(timerId);
+        timerDiv.innerHTML = "Game Over";
+        showScore();
+        document.getElementById("initials-form").style.display = "block";
+      }
     }, 1000);
-};
+  }  
 
 //display ?'s
 const questions = [
@@ -95,7 +108,7 @@ const questions = [
     },
     {
         question: "What is a variable in programming?",
-        choices: ["A named value that can be changed", "A constant value that cannot be changed", "A function that performs a specific task", "A conditional statement that controls program flow"],
+        choices: ["A named value that can be changed", "A constant value that cannot be changed", "A function that performs a specific task", "A conditional statement that controls flow"],
         answer: "A named value that can be changed",
     },
     {
@@ -104,3 +117,4 @@ const questions = [
         answer: "Float",
     }
 ]
+

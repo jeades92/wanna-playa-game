@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,21 @@
     <link rel="stylesheet" href="./assets/styles.css">
     <title>Test Your Knowledge</title>
 </head>
-<body>
-    <h1>Coding Quiz: Test Your Knowledge</h1>
-    <button id="start-btn">Start</button>
-    <div id="questions"></div>
-    <div id="timer"></div>
-    <div id="score"></div>
-    <form>
-        <input placeholder="initials" name="initials"/>
-        <button id="submit">Submit</button>
-        <div id="response"></div>
-    </form>
 
+<body>
+    <container>
+        <h1>Coding Quiz: Test Your Knowledge</h1>
+        <button id="start-btn">Start</button>
+        <div id="questions"></div>
+        <div id="timer"></div>
+        <div id="score"></div>
+        <form id="initials-form">
+            <label for="initials">Thank you for playing! Enter your Initials:</label>
+            <input type="text" id="initials" placeholder="initials">
+            <button type="submit">Submit</button>
+        </form>
+    </container>
     <script src="./assets/script.js"></script>
 </body>
+
 </html>

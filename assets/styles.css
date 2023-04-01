@@ -8,12 +8,29 @@ body {
     text-align: center;
     align-content: center;
     margin: 20px;
+    
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #start-btn {
-    margin: 0px 700px;
     background-color: lightblue;
     font-weight: bolder;
+    width: 50px;
+    height: 25px;
+    justify-content: center;  
+    align-items: center; 
 }
 
+#initials-form {
+    display: none;
+    padding-top: 10px;
+}
+
+button[type="submit"] {
+    background-color: lightblue;
+    font-weight: bolder;
+    width: 100px;
+    height: 25px;
+    justify-content: center;  
+    align-items: center; 
+}
