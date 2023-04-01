@@ -38,6 +38,12 @@ function showQuestion() {
         choiceEl.style.border = "none";
         choiceEl.style.fontSize = "18px";
         choiceEl.style.cursor = "pointer";
+        choiceEl.addEventListener("mouseover", function () {
+        choiceEl.style.backgroundColor = "white";
+    });
+    choiceEl.addEventListener("mouseout", function () {
+        choiceEl.style.backgroundColor = "pink";
+    });
         questionsDiv.appendChild(choiceEl);
         choiceEl.addEventListener("click", function () {
             if (choice === question.answer) {
