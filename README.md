@@ -10,3 +10,7 @@
 ![screenshot](./assets/images/Screenshot%202023-04-01%20at%201.41.46%20PM.png)
 
 https://jeades92.github.io/wanna-playa-game/
+
+<h3>Collaborators</h3>
+
+<p>Big thanks to Matthew Calimbas and Scott Everett for collaborating with me in tutoring.</p>
