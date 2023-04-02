@@ -48,9 +48,8 @@ function showQuestion() {
         choiceEl.addEventListener("click", function () {
             if (choice === question.answer) {
                 numCorrect++;
-                // console.log("correct");
             } else {
-                // console.log("incorrect");
+                // subtract time from clock
                 timeLeft -= 3;
             }
             //increment questions
@@ -65,7 +64,7 @@ function showQuestion() {
     });
 }
 
-//event listener for start-btn
+//event listener for start-btn & where to go after it is hidden
 startButton.addEventListener("click", function () {
     startTimer();
     showQuestion();
